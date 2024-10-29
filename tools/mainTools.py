@@ -9,6 +9,7 @@ def processingLink(link):
     PlusNew, PlusOld = '+', '%2B'
     MinusNew, MinusOld = '-', '%2D'
     EqualsNew, EqualsOld = '=', '%3D'
+    ColonNew, ColonOld = ':', '%3A'
 
     if SlashColonOld in link:link = link.replace(SlashColonOld, SlashColonNew)
     if SlashOld in link:link = link.replace(SlashOld, SlashNew)
@@ -17,6 +18,7 @@ def processingLink(link):
     if PlusOld in link:link = link.replace(PlusOld, PlusNew)
     if MinusOld in link:link = link.replace(MinusOld, MinusNew)
     if EqualsOld in link:link = link.replace(EqualsOld, EqualsNew)
+    if ColonOld in link:link = link.replace(ColonOld, ColonNew)
     if ending in link:link = link.split(ending)[0]
 
     return link

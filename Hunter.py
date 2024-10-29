@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from tools.links import RESULT_LINK
 from tools.mainTools import readSetLinks
+from config import CounterRequest, UserAgent
 import requests
 
 def InitBS(response):
@@ -15,22 +16,33 @@ def InitBS(response):
                 link = link.split('=')[1]
                 RESULT_LINK.add(f'{link}')
         except:pass
-    readSetLinks()
+    #readSetLinks()
 
 def startDuck(user_request):
     
-    headers = {'User-Agent':'GoogleBot'}
+    def count(page, status):
+        print(f'Request [{page}] :|: Status code: {status}')
+
+    headers = {'User-Agent':UserAgent}
 
     url = f'https://html.duckduckgo.com/html/?q=/{user_request}'
-    response = requests.get(url, headers=headers)
-    resp_status = response.status_code
-    if resp_status == 200:
-        print(f'Status code: {resp_status}\n')
-        InitBS(response)
-    else:
-        print(f"Запрос отклонен")
-        startDuck(user_request)
-        print(f'Status code: {resp_status}\n')
+    pages = 0
+    for pages in range(CounterRequest):
+        response = requests.get(url, headers=headers)
+        resp_status = response.status_code
+        if resp_status <= 300:
+            pages+=1
+            count(pages, resp_status)
+            InitBS(response)
+        else:
+            pages+=1
+            print(f"Запрос отклонен")
+            count(pages, resp_status)
+            #startDuck(user_request)
+        if pages == CounterRequest:
+            break
+
+    readSetLinks()
 
 def userRequest():
     user_request = input("Запрос: ")
