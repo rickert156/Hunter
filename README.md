@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/rickert156/rickert156/blob/main/assets/Hunter.png" alt="Hunter">
+  <img src="https://github.com/rickert156/rickert156/blob/main/assets/Hunter2.png" alt="Hunter">
 </div>
 
 # Hunter
