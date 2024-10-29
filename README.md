@@ -1,4 +1,7 @@
-[!Header]
+<div align="center">
+  <img src="https://github.com/rickert156/rickert156/blob/main/assets/Hunter.png" alt="Millennion">
+</div>
+
 # Hunter
 ## Поиск информации через различные поисковые системы
 На данный момент поиск идет только через DuckDuckGo. Некоторые параметры можно регулировать через файл конфигурации config.py. <p>
