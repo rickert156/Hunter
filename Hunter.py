@@ -1,11 +1,12 @@
 from bs4 import BeautifulSoup
+from tools.menu import menu
 from tools.links import RESULT_LINK
 from tools.mainTools import readSetLinks
-from config import CounterRequest, UserAgent
-import requests
+from tools.searchEngine import DuckDuckGo
+from config import CounterRequest, UserAgent, TimeSleep
+import requests, time
 
 def InitBS(response):
-    global RESULT_LINK
     response = response.text
     bs = BeautifulSoup(response, 'lxml')
     #print(bs.body.get_text())
@@ -18,15 +19,17 @@ def InitBS(response):
         except:pass
     #readSetLinks()
 
-def startDuck(user_request):
-    
+def startSearch(user_request, number):
+    if number == 1:searchEngine = DuckDuckGo
+    else:searchEngine = DuckDuckGo
     def count(page, status):
         print(f'Request [{page}] :|: Status code: {status}')
 
     headers = {'User-Agent':UserAgent}
 
-    url = f'https://html.duckduckgo.com/html/?q=/{user_request}'
+    url = f'{searchEngine}{user_request}'
     pages = 0
+    print(f'Отладка: поисковик - {searchEngine}')
     for pages in range(CounterRequest):
         response = requests.get(url, headers=headers)
         resp_status = response.status_code
@@ -38,14 +41,20 @@ def startDuck(user_request):
             pages+=1
             print(f"Запрос отклонен")
             count(pages, resp_status)
-            #startDuck(user_request)
+        time.sleep(TimeSleep)
         if pages == CounterRequest:
             break
 
     readSetLinks()
 
 def userRequest():
-    user_request = input("Запрос: ")
-    startDuck(user_request)
+    try:
+        menu()
+        try:
+            searchEngine = int(input("Какой поисковой системой будем пользоваться: "))
+        except:print('Некорректный выбор!')
+        user_request = input("Запрос: ")
+        startSearch(user_request, searchEngine)
+    except KeyboardInterrupt:print('\nВыход из программы\n')
 
 userRequest()
