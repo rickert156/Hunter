@@ -3,16 +3,20 @@ from tools.mainTools import readSetLinks
 from tools.searchEngine import DuckDuckGo, Metabot
 from tools.duck import DuckSearch
 
-def startSearch(user_request, number):
+def startSearch( number):
     searchEngine = False
+    
+    if number == 10:return print("Тут будет меню")
     if number == 1:searchEngine = DuckDuckGo
     if number == 2:searchEngine = Metabot
     else:searchEngine = DuckDuckGo
+    
+    user_request = input("Запрос: ")
 
     print(f'Отладка: поисковик - {searchEngine}')
     url = f'{searchEngine}{user_request}'
     pages = 0
-    DuckSearch(pages, url)
+    if searchEngine == DuckDuckGo:DuckSearch(pages, url)
 
     readSetLinks()
 
@@ -21,8 +25,7 @@ def userRequest():
         menu()
         try:searchEngine = int(input("Какой поисковой системой будем пользоваться: "))
         except:print('Некорректный выбор!')
-        user_request = input("Запрос: ")
-        startSearch(user_request, searchEngine)
+        startSearch(searchEngine)
     except KeyboardInterrupt:print('\nВыход из программы\n')
 
 userRequest()

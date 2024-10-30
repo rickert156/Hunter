@@ -12,6 +12,7 @@ def menu():
     {BLUE}[3]{RESET} {GREEN}Search Engine 3{RESET}\t{BLUE}[4]{RESET} {GREEN}Search Engine 4{RESET}
     
     {YELLOW}[x]{RESET} {GREEN}Config{RESET}
+    
     """
     print(menu)
 
