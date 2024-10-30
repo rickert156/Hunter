@@ -13,6 +13,7 @@ def menu():
     
     {YELLOW}[x]{RESET} {GREEN}Config{RESET}
     
+    {RED}Для вывода конфига нажми '10'{RESET}
     """
     print(menu)
 

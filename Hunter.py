@@ -1,4 +1,5 @@
 from tools.menu import menu
+from tools.editConfig import EditConfig
 from tools.mainTools import readSetLinks
 from tools.searchEngine import DuckDuckGo, Metabot
 from tools.duck import DuckSearch
@@ -6,7 +7,7 @@ from tools.duck import DuckSearch
 def startSearch( number):
     searchEngine = False
     
-    if number == 10:return print("Тут будет меню")
+    if number == 10:return EditConfig()
     if number == 1:searchEngine = DuckDuckGo
     if number == 2:searchEngine = Metabot
     else:searchEngine = DuckDuckGo

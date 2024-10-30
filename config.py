@@ -1,3 +1,3 @@
-CounterRequest = 10
-TimeSleep = 0
-UserAgent = 'GoogleBot'
+CounterRequest = 1
+TimeSleep = 2
+UserAgent = "google"
