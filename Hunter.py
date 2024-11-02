@@ -1,30 +1,29 @@
 from tools.menu import menu
 from tools.editConfig import EditConfig
 from tools.mainTools import readSetLinks
-from tools.searchEngine import DuckDuckGo, Metabot
+from tools.searchEngine import DuckDuckGo
 from tools.duck import DuckSearch
 
 def startSearch( number):
-    searchEngine = False
+    requestEngine = False
     
     if number == 10:return EditConfig()
-    if number == 1:searchEngine = DuckDuckGo
-    if number == 2:searchEngine = Metabot
-    else:searchEngine = DuckDuckGo
+    if number == 1:requestEngine = DuckDuckGo
+    else:requestEngine = DuckDuckGo
     
     user_request = input("Запрос: ")
 
-    print(f'Отладка: поисковик - {searchEngine}')
-    url = f'{searchEngine}{user_request}'
+    print(f'Отладка: поисковик - {requestEngine}')
+    url = f'{requestEngine}{user_request}'
     pages = 0
-    if searchEngine == DuckDuckGo:DuckSearch(pages, url)
+    if requestEngine == DuckDuckGo:DuckSearch(pages, url)
 
     readSetLinks()
 
 def userRequest():
     try:
         menu()
-        try:searchEngine = int(input("Какой поисковой системой будем пользоваться: "))
+        try:searchEngine = int(input("Способ Поиска информации: "))
         except:print('Некорректный выбор!')
         startSearch(searchEngine)
     except KeyboardInterrupt:print('\nВыход из программы\n')
