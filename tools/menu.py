@@ -8,7 +8,7 @@ RESET = "\033[0m"
 def menu():
     menu = f"""Меню Hunter
 
-    {BLUE}[1]{RESET} {GREEN}DuckDuckGo{RESET}\t{BLUE}[2]{RESET} {GREEN }Operator 1{RESET}
+    {BLUE}[1]{RESET} {GREEN}DuckDuckGo{RESET}\t{BLUE}[2]{RESET} {GREEN }Dork: site{RESET}
     {BLUE}[3]{RESET} {GREEN}Operator 2{RESET}\t{BLUE}[4]{RESET} {GREEN}Operator 3{RESET}
     
     {YELLOW}[x]{RESET} {GREEN}Config{RESET}

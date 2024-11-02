@@ -1,1 +1,1 @@
-DuckDuckGo = 'https://html.duckduckgo.com/html/?q=/'
+DuckDuckGo = 'https://html.duckduckgo.com/html/?q='
